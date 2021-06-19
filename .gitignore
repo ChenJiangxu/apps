@@ -5,6 +5,7 @@ dist/
 eggs/
 .eggs/
 *.egg
+*.egg-info/
 *.log
 local_settings.py
 .ipynb_checkpoints
