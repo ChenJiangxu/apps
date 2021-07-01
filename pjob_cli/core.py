@@ -34,7 +34,7 @@ class Client:
         if start_time: body.update({'start_time': start_time})
         respond = requests.post(url=accept_url, data=json.dumps(body), headers=self.headers)
         print(respond.text)
-        return respond
+        return respond.json()
 
     def mission_log(self, mission_id):
         ### 查看日志
