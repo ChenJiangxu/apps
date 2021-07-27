@@ -83,6 +83,18 @@ class Client:
         response = requests.get(url=state_url, params=params, headers=self.headers)
         return response.json().get('data', '')
 
+    def get_script_by_name(self, script_name):
+        params = {'searchValue': script_name}
+        state_url = self.endpoint + "/api/job/v1/executive/script/"
+        try:
+            response = requests.get(url=state_url, params=params, headers=self.headers).json()
+            for i in response.get('data'):
+                if i.get('script_name') == script_name: return i
+            raise Exception(f'未找到名为{script_name}的脚本')
+        except Exception as err:
+            print(err)
+            return {}
+
     def current_mission_list(self):
         state_url = self.endpoint + "/api/job/v1/flow/current/list/"
         try:
