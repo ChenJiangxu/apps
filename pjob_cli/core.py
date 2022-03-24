@@ -11,13 +11,14 @@ import xml.etree.ElementTree as ET
 
 class Client:
 
-    def __init__(self, endpoint, job_auth_key):
+    def __init__(self, endpoint, job_auth_key, tenant_id):
         global false, true
         false, true = False, True
         self.endpoint = endpoint
         self.headers = {
             'X-Xsrftoken': 'zQtY4sw7sqYspVLrqV',
             "Sdk-Method": "zQtY4sw7sqYspVLrqV",
+            "tenantid": str(tenant_id),
             'Cookie': f'auth_key={job_auth_key}'
         }
 
